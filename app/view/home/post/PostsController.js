@@ -14,6 +14,7 @@ Ext.define('Publishing.view.home.post.PostsController', {
 
     init: function(){
 
+        //Setup bindings for Classic
         this.getView().on('render', function(){
             this.layout = this.getView().findParentByType('layout');
             this.editform = this.layout.down('editform');
@@ -53,13 +54,17 @@ Ext.define('Publishing.view.home.post.PostsController', {
 
     loadRecord: function( record ){
 
-        this.editform.getViewModel().set( 'record', record );
-        this.editform.getForm().loadRecord( record );
+        if(this.editForm) {
+            this.editform.getViewModel().set( 'record', record );
+            this.editform.getForm().loadRecord( record );
 
-        Publishing.model.Comment.getProxy().setUrl('http://localhost:3000/posts/'+record.get('id')+'/comments');
-        this.commentsgrid.getStore().load();
+            Publishing.model.Comment.getProxy().setUrl('http://localhost:3000/posts/'+record.get('id')+'/comments');
+            this.commentsgrid.getStore().load();
 
-        this.postsgrid.getSelectionModel().select(record);
+            this.postsgrid.getSelectionModel().select(record);     
+        }
+
+        
     }
     
 });

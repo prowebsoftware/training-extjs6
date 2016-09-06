@@ -3,7 +3,6 @@ Ext.define('Publishing.view.layout.LayoutController', {
     alias: 'controller.layout-layout',
 
     requires: [
-        'Publishing.view.home.post.edit.Form',
         'Publishing.view.users.Users',
         'Ext.ux.AjaxPromise'
     ],
@@ -12,14 +11,6 @@ Ext.define('Publishing.view.layout.LayoutController', {
         
         var window = Ext.create('Publishing.view.users.Users', {
         });
-
-
-        /*var window = Ext.create('Ext.window.Window', {
-            width: 400,
-            height: 200,
-            html: 'Testing'
-        });*/
-
 
         window.show();
     },
